@@ -9,7 +9,7 @@ inherit kernel
 COMPATIBLE_MACHINE = "(qcom)"
 
 LINUX_QCOM_GIT ?= "git://git.codelinaro.org/clo/la/kernel/qcom.git;protocol=https"
-SRCBRANCH ?= "qclinux.6.12.y"
+SRCBRANCH ?= "qclinux.6.14.y"
 SRC_URI = "${LINUX_QCOM_GIT};branch=${SRCBRANCH}"
 
 # To build bleeding edge qcom staging kernel set preferred
@@ -18,9 +18,9 @@ BBCLASSEXTEND = "devupstream:target"
 PN:class-devupstream = "linux-qcom-staging-tip"
 SRCREV:class-devupstream = "${AUTOREV}"
 
-# Tag: LKP.QCLINUX.0.0-11000-kernel.0
-SRCREV = "6fad66a6870ebbd720c72551040d7b54c282299e"
-PV = "6.12+git"
+# v6.14
+SRCREV = "6613b499fc6956027cc6d24f36c59f0d986a19f3"
+PV = "6.14+git"
 
 S = "${WORKDIR}/git"
 
