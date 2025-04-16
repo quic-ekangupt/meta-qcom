@@ -35,6 +35,11 @@ SYSTEMD_SERVICE:${PN} = "usr-lib-rfsa.service"
 SYSTEMD_SERVICE:${PN}-systemd = "adsprpcd.service cdsprpcd.service sdsprpcd.service"
 SYSTEMD_AUTO_ENABLE:${PN}-systemd = "enable"
 
+HEADER_FILES = "\
+    adsp_default_listener1.h AEEatomic.h AEEQList.h AEEstd.h AEEStdDef.h AEEStdErr.h  AEEVaList.h \
+    dspqueue.h HAP_debug.h HAP_farf.h HAP_pls.h remote.h remote64.h rpcmem.h verify.h \
+"
+
 do_install:append() {
     install -d ${D}${libdir}/rfsa
 
@@ -46,6 +51,11 @@ do_install:append() {
 
     install -d ${D}${sbindir}
     install -m 0755 ${UNPACKDIR}/mount-dsp.sh ${D}${sbindir}
+
+    install -d ${D}${includedir}/
+    for header in ${HEADER_FILES}; do
+        install -m 0644 ${S}/inc/${header} ${D}${includedir}/
+    done
 }
 
 FILES:${PN} += " \
@@ -57,6 +67,7 @@ FILES:${PN} += " \
     ${libdir}/libcdsprpc.so \
     ${libdir}/libsdsprpc.so \
 "
+FILES:${PN}-dev:append = "${includedir}/*.h"
 
 FILES:${PN}-dev:remove = "${FILES_SOLIBSDEV}"
 
