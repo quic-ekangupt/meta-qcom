@@ -33,7 +33,7 @@ SYSTEMD_PACKAGES = "${PN} ${PN}-systemd"
 SYSTEMD_SERVICE:${PN} = "usr-lib-rfsa.service"
 
 SYSTEMD_SERVICE:${PN}-systemd = "adsprpcd.service cdsprpcd.service sdsprpcd.service"
-SYSTEMD_AUTO_ENABLE:${PN}-systemd = "disable"
+SYSTEMD_AUTO_ENABLE:${PN}-systemd = "enable"
 
 do_install:append() {
     install -d ${D}${libdir}/rfsa
