@@ -11,6 +11,7 @@ SRC_URI = "\
     file://0001-Add-_GNU_SOURCE-definition-to-enable-gettid-function.patch \
     file://0002-Add-sys-time.h-header-to-enable-time-retrieval-funct.patch \
     file://0001-Daemon-waits-for-secure-fastrpc-device-node-before-s.patch \
+    file://0001-Handle-wakelock-failure-if-it-is-unsupported.patch \
     file://adsprpcd.service \
     file://cdsprpcd.service \
     file://sdsprpcd.service \

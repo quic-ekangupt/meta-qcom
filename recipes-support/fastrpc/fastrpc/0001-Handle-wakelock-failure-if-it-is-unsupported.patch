@@ -1,0 +1,35 @@
+From aae11cc59ee9626710be64efbe96e46e2e33951d Mon Sep 17 00:00:00 2001
+From: karthik sanagavarapu <quic_kartsana@quicinc.com>
+Date: Wed, 9 Apr 2025 17:52:00 +0530
+Subject: [PATCH] Handle wakelock failure if it is unsupported
+
+Added check for unsupported wakelock in `update_kernel_wakelock_status.
+This change helps to handle unsupported wakelock scenarios gracefully.
+
+Signed-off-by: karthik sanagavarapu <quic_kartsana@quicinc.com>
+Upstream-Status: Submitted [https://github.com/quic/fastrpc/pull/158/commits/aae11cc59ee9626710be64efbe96e46e2e33951d]
+---
+ src/fastrpc_apps_user.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/fastrpc_apps_user.c b/src/fastrpc_apps_user.c
+index f9c6fd7..c057008 100644
+--- a/src/fastrpc_apps_user.c
++++ b/src/fastrpc_apps_user.c
+@@ -2222,10 +2222,12 @@ static int update_kernel_wakelock_status(int domain, int dev,
+   nErr = ioctl_control(dev, DSPRPC_CONTROL_WAKELOCK, &wl);
+   if (nErr) {
+     if (errno == EBADRQC || errno == ENOTTY || errno == ENXIO ||
+-        errno == EINVAL) {
++        errno == EINVAL || nErr == AEE_EUNSUPPORTED) {
+       VERIFY_WPRINTF(
+           "Warning: %s: kernel does not support wakelock management (%s)",
+           __func__, strerror(errno));
++      fastrpc_wake_lock_enable[domain] = 0;
++      fastrpc_wake_lock_deinit();
+       return AEE_SUCCESS;
+     }
+     FARF(ERROR,
+-- 
+2.34.1
+
