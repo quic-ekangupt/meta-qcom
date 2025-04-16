@@ -1,0 +1,29 @@
+From 2da0d143ec0b82ab425ba53ee86474d449c9656b Mon Sep 17 00:00:00 2001
+From: karthik sanagavarapu <quic_kartsana@quicinc.com>
+Date: Wed, 9 Apr 2025 14:35:08 +0530
+Subject: [PATCH 2/2] Add sys/time.h header to enable time retrieval functions
+
+Including the sys/time.h header allows the use of the gettimeofday
+function for precise time measurement.
+
+Signed-off-by: karthik sanagavarapu <quic_kartsana@quicinc.com>
+Upstream-Status: Submitted [https://github.com/quic/fastrpc/pull/156/commits/2da0d143ec0b82ab425ba53ee86474d449c9656b]
+---
+ inc/fastrpc_common.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/inc/fastrpc_common.h b/inc/fastrpc_common.h
+index c07749d..a8faf21 100644
+--- a/inc/fastrpc_common.h
++++ b/inc/fastrpc_common.h
+@@ -8,6 +8,7 @@
+ #include <stdlib.h>
+ #include <errno.h>
+ #include <unistd.h>
++#include <sys/time.h>
+ 
+ /* Header file used by all other modules
+  * will contain the most critical defines
+-- 
+2.34.1
+

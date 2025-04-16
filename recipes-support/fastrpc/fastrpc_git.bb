@@ -8,6 +8,8 @@ LIC_FILES_CHKSUM = "file://src/fastrpc_apps_user.c;beginline=1;endline=2;md5=a5b
 SRCREV = "f16097761580abc9bb47bdaac12898689a134516"
 SRC_URI = "\
     git://github.com/quic/fastrpc.git;branch=main;protocol=https \
+    file://0001-Add-_GNU_SOURCE-definition-to-enable-gettid-function.patch \
+    file://0002-Add-sys-time.h-header-to-enable-time-retrieval-funct.patch \
     file://adsprpcd.service \
     file://cdsprpcd.service \
     file://sdsprpcd.service \

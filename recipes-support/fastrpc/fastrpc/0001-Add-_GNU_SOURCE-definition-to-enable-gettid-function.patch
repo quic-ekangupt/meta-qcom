@@ -1,0 +1,52 @@
+From 692b309e56cc320c0f9eb71a1850397964d9fc88 Mon Sep 17 00:00:00 2001
+From: karthik sanagavarapu <quic_kartsana@quicinc.com>
+Date: Wed, 9 Apr 2025 14:10:42 +0530
+Subject: [PATCH 1/2] Add _GNU_SOURCE definition to enable gettid function
+ usage
+
+Define _GNU_SOURCE before including headers to access the gettid function.
+This change ensures compatibility with GNU extensions required for gettid.
+
+Signed-off-by: karthik sanagavarapu <quic_kartsana@quicinc.com>
+Upstream-Status: Submitted [https://github.com/quic/fastrpc/pull/156/commits/692b309e56cc320c0f9eb71a1850397964d9fc88]
+---
+ src/fastrpc_apps_user.c | 2 +-
+ src/fastrpc_log.c       | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/fastrpc_apps_user.c b/src/fastrpc_apps_user.c
+index f9c6fd7..aa84ace 100644
+--- a/src/fastrpc_apps_user.c
++++ b/src/fastrpc_apps_user.c
+@@ -7,7 +7,7 @@
+ //#ifndef VERIFY_PRINT_INFO
+ //#define VERIFY_PRINT_INFO
+ //#endif // VERIFY_PRINT_INFO
+-
++#define _GNU_SOURCE
+ #ifndef VERIFY_PRINT_WARN
+ #define VERIFY_PRINT_WARN
+ #endif // VERIFY_PRINT_WARN
+diff --git a/src/fastrpc_log.c b/src/fastrpc_log.c
+index c9b54cf..15f2726 100644
+--- a/src/fastrpc_log.c
++++ b/src/fastrpc_log.c
+@@ -1,6 +1,7 @@
+ // Copyright (c) 2024, Qualcomm Innovation Center, Inc. All rights reserved.
+ // SPDX-License-Identifier: BSD-3-Clause
+ 
++#define _GNU_SOURCE
+ #include <pthread.h>
+ #include <stdbool.h>
+ #include <stdio.h>
+@@ -8,6 +9,7 @@
+ #include <string.h>
+ #include <sys/time.h>
+ #include <limits.h>
++#include <unistd.h>
+ 
+ #include "AEEStdErr.h"
+ #include "fastrpc_config.h"
+-- 
+2.34.1
+
