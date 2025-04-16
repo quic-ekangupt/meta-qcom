@@ -1,14 +1,13 @@
-HOMEPAGE = "https://git.codelinaro.org/linaro/qcomlt/fastrpc.git"
+HOMEPAGE = "https://github.com/quic/fastrpc"
 SUMMARY = "Qualcomm FastRPC applications and library"
 SECTION = "devel"
 
 LICENSE = "BSD-3-Clause"
-LIC_FILES_CHKSUM = "file://src/fastrpc_apps_user.c;beginline=1;endline=29;md5=f94f3a7beba14ae2f59f817e9634f891"
+LIC_FILES_CHKSUM = "file://src/fastrpc_apps_user.c;beginline=1;endline=2;md5=a5b0aa365758f6917baf7a2d81f5d29e"
 
-SRCREV = "06ef0e7ae56b9f7dde53fb92e8a4bc5a843af8a8"
+SRCREV = "f16097761580abc9bb47bdaac12898689a134516"
 SRC_URI = "\
-    git://git.codelinaro.org/linaro/qcomlt/fastrpc.git;branch=automake;protocol=https \
-    file://0001-apps_std_fopen_with_env-account-for-domain-kinds-whe.patch \
+    git://github.com/quic/fastrpc.git;branch=main;protocol=https \
     file://adsprpcd.service \
     file://cdsprpcd.service \
     file://sdsprpcd.service \
@@ -16,7 +15,7 @@ SRC_URI = "\
     file://mount-dsp.sh \
 "
 
-PV = "0.0+"
+PV = "0.1+"
 
 S = "${WORKDIR}/git"
 
