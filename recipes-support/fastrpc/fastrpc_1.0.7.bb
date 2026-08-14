@@ -6,7 +6,7 @@ LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=b67986b6880754696d418dbaa2cf51d1"
 DEPENDS = "libbsd libyaml"
 
-SRCREV = "5f0b6a33a19f3f7f0c06709846752a2caf64e413"
+SRCREV = "228d98b5f143ed917789cde017a8aa548e65b80b"
 SRC_URI = "\
     git://github.com/qualcomm/fastrpc.git;branch=main;protocol=https;tag=v${PV} \
     file://run-ptest \
